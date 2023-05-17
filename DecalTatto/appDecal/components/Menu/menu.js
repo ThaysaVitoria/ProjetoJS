@@ -8,6 +8,8 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import Icon from 'react-native-vector-icons/FontAwesome5';
 
+import GerenciarProdutos from '../../components/Produtos/gerenciarproduto'; 
+
 
 
 
@@ -51,9 +53,9 @@ function ListScreen() {
 
 
 
-function PostScreen() {
+function ProdutosScreen() {
 
-    return <Produtos />
+   return <GerenciarProdutos/> 
 
 }
 
@@ -162,7 +164,7 @@ export default function Menu() {
 
                     name="Entrega"
 
-                    component={PostScreen}
+                    component={ProdutosScreen}
 
                 />
 
