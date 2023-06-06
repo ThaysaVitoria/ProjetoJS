@@ -10,7 +10,7 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 
 import GerenciarProdutos from '../../components/Produtos/gerenciarproduto'; 
 
-
+import GerenciarPerfil from '../../components/Perfil/gerenciarperfil';
 
 
 
@@ -58,7 +58,11 @@ function ProdutosScreen() {
    return <GerenciarProdutos/> 
 
 }
+function PerfilScreen() {
 
+    return <GerenciarPerfil/> 
+ 
+ }
 
 
 
@@ -109,15 +113,15 @@ export default function Menu() {
 
                                 break;
 
-                            case 'Listar':
+                            case 'Perfil':
 
-                                iconName = 'list';
+                                iconName = 'user';
 
                                 break;
 
-                            case 'Entrega':
+                            case 'Produto':
 
-                                iconName = 'dolly';
+                                iconName = 'basket-outline';
 
                                 break;
 
@@ -158,7 +162,7 @@ export default function Menu() {
 
                 <Tab.Screen name="Home" component={HomeScreen} />
 
-                <Tab.Screen name="Listar" component={ListScreen} />
+                <Tab.Screen name="Perfil" component={PerfilScreen} />
 
                 <Tab.Screen
 

@@ -10,6 +10,7 @@ import 'firebase/compat/database';
 let firebaseConfig = {
     apiKey: "AIzaSyBJAtpxJWDkwnFPMR7JaK559B3yJCSwel0",
     authDomain: "dbapploja.firebaseapp.com",
+    databaseURL: "https://dbapploja-default-rtdb.firebaseio.com",
     projectId: "dbapploja",
     storageBucket: "dbapploja.appspot.com",
     messagingSenderId: "610544645914",

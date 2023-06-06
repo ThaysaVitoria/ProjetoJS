@@ -17,17 +17,15 @@ const Separator = () => {
 
 } 
 
-export default function GerenciarProdutos() { 
+export default function GerenciarPerfil() { 
 
-  
+    const [nomeuser, setNomeUser] = useState('');  
 
-    const [nome, setNome] = useState('');  
+    const [celular, setCelular] = useState('');  
 
-    const [marca, setMarca] = useState('');  
+    const [endereco, setEndereco] = useState('');  
 
-    const [preco, setPreco] = useState('');  
-
-    const [cor, setCor] = useState('');  
+    const [datanasc, setDataNasc] = useState('');  
 
     const [key, setKey] = useState('');  
 
@@ -38,17 +36,17 @@ export default function GerenciarProdutos() {
 
     //editar dados 
 
-    if (nome !== '' & marca !== '' &  preco !== '' & cor !== ''  & key !== '') { 
+    if (nomeuser !== '' & celular !== '' &  endereco !== '' & datanasc !== ''  & key !== '') { 
 
-      firebase.database().ref('produto').child(key).update({ 
+      firebase.database().ref('perfil').child(key).update({ 
 
-        nome: nome, marca: marca, preco: preco, cor: cor,
+        nomeuser: nomeuser, celular: celular, endereco: endereco, datanasc: datanasc,
 
       }) 
 
       Keyboard.dismiss(); 
 
-      alert('Produto Editado!'); 
+      alert('Perfil Editado!'); 
 
       clearFields(); 
 
@@ -60,27 +58,24 @@ export default function GerenciarProdutos() {
 
     //cadastrar dados 
 
-    let prod = await firebase.database().ref('produto'); 
+    let perf = await firebase.database().ref('perfil'); 
 
-    let chave = prod.push().key; //comando para salvar é o push 
+    let chave = perf.push().key; //comando para salvar é o push 
 
   
 
-    prod.child(chave).set({ 
+    perf.child(chave).set({ 
 
-      nome: nome, 
-
-      marca: marca, 
-
-      preco: preco, 
-
-      cor: cor 
+        nomeuser: nomeuser,
+        celular: celular, 
+        endereco: endereco, 
+        datanasc: datanasc
 
     }); 
 
     Keyboard.dismiss(); 
 
-    alert('Produto Cadastrado!'); 
+    alert('Perfil Cadastrado!'); 
 
     clearFields(); 
 
@@ -88,10 +83,10 @@ export default function GerenciarProdutos() {
   //metodo para limpar os campos com valores
 
         function clearFields(){
-            setNome('');
-            setMarca('');
-            setPreco('');
-            setCor('');      
+            setNomeUser('');
+            setCelular('');
+            setEndereco('');
+            setDataNasc('');      
          }
 
   
@@ -99,48 +94,48 @@ export default function GerenciarProdutos() {
     return ( 
 
         <View style={styles.container}> 
+
         <Separator/>
+
             <TextInput 
 
-                placeholder='Produto' 
+                placeholder='Nome' 
 
-                left={<TextInput.Icon icon="car" />} 
-
-                maxLength={40} 
+                left={<TextInput.Icon icon="account" />} 
 
                 style={styles.input} 
 
-                onChangeText={(text) => setNome(text)} 
+                onChangeText={(text) => setNomeUser(text)} 
 
-                value={nome} 
+                value={nomeuser} 
 
             /> 
           <Separator/>
             <TextInput 
 
-                placeholder='Marca' 
+                placeholder='Celular' 
 
-                left={<TextInput.Icon icon="sale" />} 
+                left={<TextInput.Icon icon="phone" />} 
 
                 style={styles.input} 
 
-                onChangeText={(text) => setMarca(text)} 
+                onChangeText={(text) => setCelular(text)} 
 
-                value={marca} 
+                value={celular} 
 
             /> 
            <Separator/>
             <TextInput 
 
-                placeholder='Preço (R$)' 
+                placeholder='Endereço' 
 
-                left={<TextInput.Icon icon="sack" />} 
+                left={<TextInput.Icon icon="home-outline" />} 
 
                 style={styles.input} 
 
-                onChangeText={(text) => setPreco(text)} 
+                onChangeText={(text) => setEndereco(text)} 
 
-                value={preco} 
+                value={endereco} 
 
             /> 
 
@@ -148,15 +143,15 @@ export default function GerenciarProdutos() {
 
             <TextInput 
 
-                placeholder='Cor' 
+                placeholder='Data Nascimento' 
 
-                left={<TextInput.Icon icon="invert-colors" />} 
+                left={<TextInput.Icon icon="calendar-range" />} 
 
                 style={styles.input} 
 
-                onChangeText={(text) => setCor(text)} 
+                onChangeText={(text) => setDataNasc(text)} 
 
-                value={cor} 
+                value={datanasc} 
 
             />   
             <Separator/> 
@@ -169,7 +164,7 @@ export default function GerenciarProdutos() {
 
                 title="Adicionar" 
 
-                color="#DC143C" 
+                color="#48C295" 
 
                 accessibilityLabel="" 
 
@@ -179,9 +174,7 @@ export default function GerenciarProdutos() {
 
     ); 
 
-} 
-
-  
+}
 
 const styles = StyleSheet.create({ 
 
@@ -203,7 +196,9 @@ const styles = StyleSheet.create({
 
         fontSize: 13, 
 
-        borderRadius: 8 
+        borderRadius: 8, 
+
+        backgroundColor: '#fff'
 
     }, 
 
@@ -219,11 +214,11 @@ const styles = StyleSheet.create({
 
         alignItems: 'center', 
 
-        backgroundColor: '#DC143C', 
+        backgroundColor: '#48C295', 
 
         borderWidth: 0.5, 
 
-        borderColor: '#DC143C', 
+        borderColor: '#48C295', 
 
         height: 40, 
 
