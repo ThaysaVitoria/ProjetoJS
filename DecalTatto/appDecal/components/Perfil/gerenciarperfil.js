@@ -21,6 +21,8 @@ export default function GerenciarPerfil() {
 
     const [nomeuser, setNomeUser] = useState('');  
 
+    const [sobrenome, setSobrenome] = useState('');  
+
     const [celular, setCelular] = useState('');  
 
     const [endereco, setEndereco] = useState('');  
@@ -36,11 +38,11 @@ export default function GerenciarPerfil() {
 
     //editar dados 
 
-    if (nomeuser !== '' & celular !== '' &  endereco !== '' & datanasc !== ''  & key !== '') { 
+    if (nomeuser !== '' & sobrenome !== '' & celular !== '' &  endereco !== '' & datanasc !== ''  & key !== '') { 
 
       firebase.database().ref('perfil').child(key).update({ 
 
-        nomeuser: nomeuser, celular: celular, endereco: endereco, datanasc: datanasc,
+        nomeuser: nomeuser, sobrenome:sobrenome, celular: celular, endereco: endereco, datanasc: datanasc,
 
       }) 
 
@@ -67,6 +69,7 @@ export default function GerenciarPerfil() {
     perf.child(chave).set({ 
 
         nomeuser: nomeuser,
+        sobrenome: sobrenome,
         celular: celular, 
         endereco: endereco, 
         datanasc: datanasc
@@ -84,6 +87,7 @@ export default function GerenciarPerfil() {
 
         function clearFields(){
             setNomeUser('');
+            setSobrenome('');
             setCelular('');
             setEndereco('');
             setDataNasc('');      
@@ -111,6 +115,20 @@ export default function GerenciarPerfil() {
 
             /> 
           <Separator/>
+         
+            <TextInput 
+
+                placeholder='Sobrenome' 
+
+                left={<TextInput.Icon icon="ab-testing" />} 
+
+                style={styles.input} 
+
+                onChangeText={(text) => setSobrenome(text)} 
+
+                value={sobrenome} 
+
+            /> <Separator/> 
             <TextInput 
 
                 placeholder='Celular' 

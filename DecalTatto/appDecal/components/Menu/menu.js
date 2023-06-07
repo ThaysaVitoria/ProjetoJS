@@ -6,7 +6,7 @@ import { NavigationContainer } from '@react-navigation/native';
 
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-import Icon from 'react-native-vector-icons/FontAwesome5';
+import Icon from 'react-native-vector-icons/Feather';
 
 import GerenciarProdutos from '../../components/Produtos/gerenciarproduto'; 
 
@@ -121,7 +121,7 @@ export default function Menu() {
 
                             case 'Produto':
 
-                                iconName = 'basket-outline';
+                                iconName = 'shopping-bag';
 
                                 break;
 
@@ -164,13 +164,7 @@ export default function Menu() {
 
                 <Tab.Screen name="Perfil" component={PerfilScreen} />
 
-                <Tab.Screen
-
-                    name="Entrega"
-
-                    component={ProdutosScreen}
-
-                />
+                <Tab.Screen name="Produto" component={ProdutosScreen}/>
 
                 <Tab.Screen name="Ler API" component={NotificationsScreen} />
 
